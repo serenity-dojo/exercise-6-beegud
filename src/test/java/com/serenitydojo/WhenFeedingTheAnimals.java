@@ -1,15 +1,18 @@
 package com.serenitydojo;
 
 import com.serenitydojo.model.Feeder;
+
+import java.beans.Transient;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 public class WhenFeedingTheAnimals {
 
+    private Feeder feeder = new Feeder();
+
     @Test
     public void shouldFeedCatsTuna() {
-        Feeder feeder = new Feeder();
-
         String food = feeder.feeds("Cat", false);
 
         Assert.assertEquals("Tuna", food);
@@ -17,8 +20,6 @@ public class WhenFeedingTheAnimals {
 
     @Test
     public void shouldFeedHamstersCabbage() {
-        Feeder feeder = new Feeder();
-
         String food = feeder.feeds("Hamster", false);
 
         Assert.assertEquals("Cabbage", food);
@@ -26,8 +27,6 @@ public class WhenFeedingTheAnimals {
 
     @Test
     public void shouldFeedDogsDogFood() {
-        Feeder feeder = new Feeder();
-
         String food = feeder.feeds("Dog", false);
 
         Assert.assertEquals("Dog Food", food);
@@ -35,11 +34,21 @@ public class WhenFeedingTheAnimals {
 
     @Test
     public void shouldFeedPremiumCatsPremiumFood() {
-        Feeder feeder = new Feeder();
-
         String food = feeder.feeds("Cat", true);
 
         Assert.assertEquals("Salmon", food);
 
+    }
+
+    @Test
+    public void shouldFeedPremiumDogsDeluxeFood() {
+        String food = feeder.feeds("Dog", true);
+        Assert.assertEquals(food, "Deluxe Food");
+    }
+
+    @Test
+    public void shouldFeedPremiumHampstersLettuce() {
+        String food = feeder.feeds("Hamster", true);
+        Assert.assertEquals(food, "Lettuce");
     }
 }
