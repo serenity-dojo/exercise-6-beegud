@@ -1,54 +1,61 @@
 package com.serenitydojo;
 
-import com.serenitydojo.model.Feeder;
+import com.serenitydojo.model.FoodType;
 
-import java.beans.Transient;
+import static com.serenitydojo.model.AnimalType.CAT;
+import static com.serenitydojo.model.AnimalType.DOG;
+import static com.serenitydojo.model.AnimalType.HAMPSTER;
+import static com.serenitydojo.model.Feeder.feeds;
+import static com.serenitydojo.model.FoodType.DELUXE_FOOD;
+import static com.serenitydojo.model.FoodType.LETTUCE;
+import static com.serenitydojo.model.FoodType.DOG_FOOD;
+import static com.serenitydojo.model.FoodType.CABBAGE;
+import static com.serenitydojo.model.FoodType.TUNA;
+import static com.serenitydojo.model.FoodType.SALMON;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 public class WhenFeedingTheAnimals {
 
-    private Feeder feeder = new Feeder();
-
     @Test
     public void shouldFeedCatsTuna() {
-        String food = feeder.feeds("Cat", false);
+        FoodType food = feeds(CAT, false);
 
-        Assert.assertEquals("Tuna", food);
+        Assert.assertEquals(TUNA, food);
     }
 
     @Test
     public void shouldFeedHamstersCabbage() {
-        String food = feeder.feeds("Hamster", false);
+        FoodType food = feeds(HAMPSTER, false);
 
-        Assert.assertEquals("Cabbage", food);
+        Assert.assertEquals(CABBAGE, food);
     }
 
     @Test
     public void shouldFeedDogsDogFood() {
-        String food = feeder.feeds("Dog", false);
+        FoodType food = feeds(DOG, false);
 
-        Assert.assertEquals("Dog Food", food);
+        Assert.assertEquals(DOG_FOOD, food);
     }
 
     @Test
     public void shouldFeedPremiumCatsPremiumFood() {
-        String food = feeder.feeds("Cat", true);
+        FoodType food = feeds(CAT, true);
 
-        Assert.assertEquals("Salmon", food);
+        Assert.assertEquals(SALMON, food);
 
     }
 
     @Test
     public void shouldFeedPremiumDogsDeluxeFood() {
-        String food = feeder.feeds("Dog", true);
-        Assert.assertEquals(food, "Deluxe Food");
+        FoodType food = feeds(DOG, true);
+        Assert.assertEquals(food, DELUXE_FOOD);
     }
 
     @Test
     public void shouldFeedPremiumHampstersLettuce() {
-        String food = feeder.feeds("Hamster", true);
-        Assert.assertEquals(food, "Lettuce");
+        FoodType food = feeds(HAMPSTER, true);
+        Assert.assertEquals(food, LETTUCE);
     }
 }
