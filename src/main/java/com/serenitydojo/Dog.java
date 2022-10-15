@@ -1,6 +1,7 @@
 package com.serenitydojo;
 
 public class Dog extends Pet {
+
     private String favoriteToy;
     private boolean isFed = false;
 
@@ -24,7 +25,9 @@ public class Dog extends Pet {
     }
 
     // Exercise 4
-    public String makeNoise() {return DOG_NOISE;}
+    public String makeNoise() {
+        return DOG_NOISE;
+    }
 
     public void feed() {
         this.isFed = true;
